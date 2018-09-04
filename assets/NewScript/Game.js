@@ -198,6 +198,8 @@ cc.Class({
                 var mag_ball = Math.pow(ballVector.x, 2) + Math.pow(ballVector.y, 2);
                 var mag_player = Math.pow(playerVector.x, 2) + Math.pow(playerVector.y, 2);
                 var force = Math.sqrt(mag_ball + mag_player);
+                if(force > 50)
+                    force = 50;
                 var angle = Math.atan2(diffy, diffx);
 
                 ballVector.x = force * Math.cos(angle);
