@@ -97,13 +97,40 @@ cc.Class({
         lblBotScore: cc.Label,
         lblLeftGoals: cc.Label,
 
-        sndShoot: cc.AudioClip,
-        sndWall1: cc.AudioClip,
-        sndWall2: cc.AudioClip,
-        sndWall3: cc.AudioClip,
-        sndScoreBot: cc.AudioClip,
-        sndScorePlayer: cc.AudioClip,
-        sndPuckSet: cc.AudioClip,
+        sndShoot: {
+            default: null,
+            type: cc.AudioClip
+        },
+
+        sndWall1: {
+            default: null,
+            type: cc.AudioClip
+        },
+
+        sndWall2: {
+            default: null,
+            type: cc.AudioClip
+        },
+
+        sndWall3: {
+            default: null,
+            type: cc.AudioClip
+        },
+
+        sndScoreBot: {
+            default: null,
+            type: cc.AudioClip
+        },
+
+        sndScorePlayer: {
+            default: null,
+            type: cc.AudioClip
+        },
+
+        sndPuckSet: {
+            default: null,
+            type: cc.AudioClip
+        },
 
         bound_right: null,
         bound_left: null,
@@ -276,7 +303,6 @@ cc.Class({
         if(ballNextPosition.y < this.stageArea.y + ballObj.Radius) 
         { 
             var dif = ballNextPosition.x - this.playerHuman.getPosition().x;
-            cc.log(dif)  ;
             if( Math.abs(dif) < this.playerHuman.width / 2 + this.ball.width / 2 && this.ball.getPosition().y > this.playerHuman.getPosition().y)
             {
                 ballNextPosition.y = this.playerHuman.getPosition().y + this.playerHuman.height / 2;
@@ -294,7 +320,6 @@ cc.Class({
         if(ballNextPosition.y > this.stageArea.y + this.stageArea.height - ballObj.Radius) 
         {
             var dif = ballNextPosition.x - this.playerBot.getPosition().x;    
-            cc.log(dif)  ;
             if( Math.abs(dif) < this.playerBot.width / 2 + this.ball.width / 2 && this.ball.getPosition().y < this.playerBot.getPosition().y)
             {
                 ballNextPosition.y = this.playerBot.getPosition().y - this.playerBot.height / 2;

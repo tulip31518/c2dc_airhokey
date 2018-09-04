@@ -43,7 +43,10 @@ cc.Class({
         gameScene: cc.Node,
         finalNode: cc.Node,
 
-        sndGameStart: cc.AudioClip,
+        sndGameStart: {
+            default: null,
+            type: cc.AudioClip
+        },
 
         humanScore: 0,
         botScore: 0,
