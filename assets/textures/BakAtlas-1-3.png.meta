@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "176a0276-5097-4f96-be70-173609516da7",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "BakAtlas-1-3": {
+      "ver": "1.0.3",
+      "uuid": "3e175d68-e1eb-43f9-8990-cadf236f4463",
+      "rawTextureUuid": "176a0276-5097-4f96-be70-173609516da7",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -0.5,
+      "offsetY": -0.5,
+      "trimX": 0,
+      "trimY": 1,
+      "width": 123,
+      "height": 123,
+      "rawWidth": 124,
+      "rawHeight": 124,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

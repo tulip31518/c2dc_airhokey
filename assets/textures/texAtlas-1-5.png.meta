@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "d965dbc1-5e18-4110-a1bb-7d3f5fdb4b4f",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "texAtlas-1-5": {
+      "ver": "1.0.3",
+      "uuid": "b6324486-d07f-4037-aad9-803f65dc4c0a",
+      "rawTextureUuid": "d965dbc1-5e18-4110-a1bb-7d3f5fdb4b4f",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": -0.5,
+      "trimX": 0,
+      "trimY": 1,
+      "width": 40,
+      "height": 39,
+      "rawWidth": 40,
+      "rawHeight": 40,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
