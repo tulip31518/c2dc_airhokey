@@ -97,40 +97,48 @@ cc.Class({
         lblBotScore: cc.Label,
         lblLeftGoals: cc.Label,
 
-        sndShoot: {
-            default: null,
-            type: cc.AudioClip
-        },
+        // sndShoot: {
+        //     default: null,
+        //     type: cc.AudioClip
+        // },
 
-        sndWall1: {
-            default: null,
-            type: cc.AudioClip
-        },
+        // sndWall1: {
+        //     default: null,
+        //     type: cc.AudioClip
+        // },
 
-        sndWall2: {
-            default: null,
-            type: cc.AudioClip
-        },
+        // sndWall2: {
+        //     default: null,
+        //     type: cc.AudioClip
+        // },
 
-        sndWall3: {
-            default: null,
-            type: cc.AudioClip
-        },
+        // sndWall3: {
+        //     default: null,
+        //     type: cc.AudioClip
+        // },
 
-        sndScoreBot: {
-            default: null,
-            type: cc.AudioClip
-        },
+        // sndScoreBot: {
+        //     default: null,
+        //     type: cc.AudioClip
+        // },
 
-        sndScorePlayer: {
-            default: null,
-            type: cc.AudioClip
-        },
+        // sndScorePlayer: {
+        //     default: null,
+        //     type: cc.AudioClip
+        // },
 
-        sndPuckSet: {
-            default: null,
-            type: cc.AudioClip
-        },
+        // sndPuckSet: {
+        //     default: null,
+        //     type: cc.AudioClip
+        // },
+
+        sndShoot:cc.AudioClip,
+        sndWall1:cc.AudioClip,
+        sndWall2:cc.AudioClip,
+        sndWall3:cc.AudioClip,
+        sndScoreBot:cc.AudioClip,
+        sndScorePlayer:cc.AudioClip,
+        sndPuckSet:cc.AudioClip,
 
         bound_right: null,
         bound_left: null,
@@ -225,8 +233,8 @@ cc.Class({
                 var mag_ball = Math.pow(ballVector.x, 2) + Math.pow(ballVector.y, 2);
                 var mag_player = Math.pow(playerVector.x, 2) + Math.pow(playerVector.y, 2);
                 var force = Math.sqrt(mag_ball + mag_player);
-                if(force > 50)
-                    force = 50;
+                if(force > 100)
+                    force = 100;
                 var angle = Math.atan2(diffy, diffx);
 
                 ballVector.x = force * Math.cos(angle);
@@ -235,7 +243,7 @@ cc.Class({
                 ballNextPosition.x = playerNextPosition.x + (playerObj.Radius + ballObj.Radius + force) * Math.cos(angle);
                 ballNextPosition.y = playerNextPosition.y + (playerObj.Radius + ballObj.Radius + force) * Math.sin(angle);
 
-                cc.audioEngine.play(this.sndShoot, false, 1);
+                cc.audioEngine.playEffect(this.sndShoot, false);
             }
 
             if(Math.pow(player.x - this.ball.x, 2) + Math.pow(player.y - this.ball.y, 2) < Math.pow(playerObj.radius() + ballObj.radius(), 2))
@@ -364,8 +372,8 @@ cc.Class({
 
                 this.homeNode.botScore += 1;
 
-                cc.audioEngine.play(this.sndWall3, false, 1);
-                cc.audioEngine.play(this.sndScoreBot, false, 1);
+                cc.audioEngine.playEffect(this.sndWall3, false);
+                cc.audioEngine.playEffect(this.sndScoreBot, false);
                 break;
             case 2://bot
                 this.ball.getComponent("Ball").setBallPosition(cc.v2(this.visibleSize.width / 2, this.stageArea.y + this.stageArea.height / 2 + 130));
@@ -373,8 +381,8 @@ cc.Class({
 
                 this.homeNode.humanScore += 1;
                 
-                cc.audioEngine.play(this.sndWall1, false, 1);
-                cc.audioEngine.play(this.sndScorePlayer, false, 1);
+                cc.audioEngine.playEffect(this.sndWall1, false);
+                cc.audioEngine.playEffect(this.sndScorePlayer, false);
                 break;
             default:
                 this.ball.getComponent("Ball").setBallPosition(cc.v2(this.visibleSize.width / 2, this.stageArea.y + this.stageArea.height / 2));
@@ -573,7 +581,7 @@ cc.Class({
     },
 
     onContactWall (nCase, contactPosition) {
-        cc.audioEngine.play(this.sndWall2, false, 1);
+        cc.audioEngine.playEffect(this.sndWall2, false); 
         return;
         var actNode = null;
 

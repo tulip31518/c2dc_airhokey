@@ -12,21 +12,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
-        //     }
-        // },
+        
         btnFav: cc.Button,
         btnSettings: cc.Button,
         btnRank: cc.Button,
@@ -43,10 +29,12 @@ cc.Class({
         gameScene: cc.Node,
         finalNode: cc.Node,
 
-        sndGameStart: {
-            default: null,
-            type: cc.AudioClip
-        },
+        // sndGameStart: {
+        //     default: null,
+        //     type: cc.AudioClip
+        // },
+
+        sndGameStart:cc.AudioClip,
 
         humanScore: 0,
         botScore: 0,
@@ -142,21 +130,34 @@ cc.Class({
             this.gameScene.getChildByName("SprGetReady").runAction(cc.scaleTo(0, 0));
             this.gameScene.getChildByName("SprGetReady").runAction(this.readyAppearAction);
 
-            cc.audioEngine.play(this.sndGameStart, false, 1);
+            cc.audioEngine.playEffect(this.sndGameStart, false);
         }, this)));
     },
 
     onClickInvite () {
-        //wx.shareAppMessage({title: "", imageUrl: ""});
-        //分享按钮
-        cc.log("点击分享按钮");
-        //this.playBtnSound();
+        // //wx.shareAppMessage({title: "", imageUrl: ""});
+        // //分享按钮
+        // cc.log("点击分享按钮");
+        // //this.playBtnSound();
         
-        // 主动拉起分享接口
-        cc.loader.loadRes("texture/share",function(err,data){
+        // // 主动拉起分享接口
+        // cc.loader.loadRes("texture/share",function(err,data){
+        //     wx.shareAppMessage({
+        //         title: "Enjoy AirHockey!",
+        //         imageUrl: data.url,
+        //         success(res){
+        //             console.log(res)
+        //         },
+        //         fail(res){
+        //             console.log(res)
+        //         }
+        //     })
+        // });    
+        
+        cc.loader.loadRes("textures/icon",function(err,data){
             wx.shareAppMessage({
                 title: "Enjoy AirHockey!",
-                imageUrl: data.url,
+                imageUrl: cc.loader.md5Pipe.transformURL(data.url),
                 success(res){
                     console.log(res)
                 },
@@ -164,7 +165,7 @@ cc.Class({
                     console.log(res)
                 }
             })
-        });      
+        });
     },
 
     onClickBack () {
@@ -193,8 +194,8 @@ cc.Class({
             this.sprLogo.runAction(this.lobbyAppearAction);
         }, this)));
 
-        this.gameScene.getComponent("Game").updateLabels();
-    },
+        this.gameScene.getComponent("Game").updateLabels();        
+    },    
     
     onFinal () {
         this.gameScene.active = false;
@@ -222,6 +223,7 @@ cc.Class({
         this.lblHumanScore.string = this.humanScore.toString();
         this.lblBotScore.string = this.botScore.toString();
         this.lblCurrentLevel.string = this.currentLevel.toString();
+        this.lblCurrentScoreLevel.string = this.currentLevel.toString();
 
         this.humanScore = 0;
         this.botScore = 0;

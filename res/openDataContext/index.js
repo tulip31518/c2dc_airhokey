@@ -91,8 +91,8 @@ function init() {
   RankWidth = stageWidth * 4 / 5;  
   RankHeight = stageHeight * 3 / 5;
   barWidth = RankWidth * 4 / 5 ;
-  barHeight = RankHeight / 11;
-  fontSize = barHeight-30;
+  barHeight = RankHeight / 11;  
+  fontSize = barHeight - 30;
 
   offsetX_rankToBorder = (stageWidth - RankWidth) / 2;
   offsetY_rankToBorder = (stageHeight - RankHeight) / 2;
@@ -171,16 +171,12 @@ function drawByData(data, i) {
   }
   x += avatarSize + intervalX;
   //绘制名称
-  context.textAlign = 'left';  
-  var nSize = RankWidth  - cupSize - avatarSize - RankWidth / 6 - 3 * intervalX;
-  data.name = "绘制头像头像";
-  var realsize = data.name.length * 55 * ratio;
-  context.fillText(data.name + "", x, startY + i * preOffsetY + textOffsetY, realsize);
-  x += nSize + intervalX;
-  //绘制分数
-  var scoSize = data.score.length * 30 * ratio;;
   context.textAlign = 'left';
-  context.fillText(data.score + "", x, startY + i * preOffsetY + textOffsetY, scoSize);
+  context.fillText(data.name + "", x, startY + i * preOffsetY + textOffsetY, textMaxSize);
+  x += textMaxSize + intervalX;
+  //绘制分数
+  context.textAlign = 'left';
+  context.fillText(data.score + "", RankWidth - intervalX, startY + i * preOffsetY + textOffsetY, textMaxSize);
 
   //画奖杯
   if ((i == 0 || i == 1 || i == 2) && page == 0) {
