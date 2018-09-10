@@ -233,6 +233,7 @@ cc.Class({
                 var mag_ball = Math.pow(ballVector.x, 2) + Math.pow(ballVector.y, 2);
                 var mag_player = Math.pow(playerVector.x, 2) + Math.pow(playerVector.y, 2);
                 var force = Math.sqrt(mag_ball + mag_player);
+                cc.audioEngine.playEffect(this.sndShoot, false);
                 if(force > 100)
                     force = 100;
                 var angle = Math.atan2(diffy, diffx);
@@ -243,7 +244,7 @@ cc.Class({
                 ballNextPosition.x = playerNextPosition.x + (playerObj.Radius + ballObj.Radius + force) * Math.cos(angle);
                 ballNextPosition.y = playerNextPosition.y + (playerObj.Radius + ballObj.Radius + force) * Math.sin(angle);
 
-                cc.audioEngine.playEffect(this.sndShoot, false);
+                
             }
 
             if(Math.pow(player.x - this.ball.x, 2) + Math.pow(player.y - this.ball.y, 2) < Math.pow(playerObj.radius() + ballObj.radius(), 2))

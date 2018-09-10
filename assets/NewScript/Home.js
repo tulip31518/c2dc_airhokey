@@ -190,8 +190,11 @@ cc.Class({
             this.btnSettings.node.active = true;
             this.lblScore.node.active = true;
             this.lblCurrentScoreLevel.node.active = true;
-
-            this.sprLogo.runAction(this.lobbyAppearAction);
+            
+            this.sprLogo.position = cc.v2(0, 163);
+            this.sprLogo.runAction(cc.sequence(cc.moveBy(0, cc.v2(0, 800)), this.lobbyAppearAction));
+             
+            // this.sprLogo.runAction(this.lobbyAppearAction);
         }, this)));
 
         this.gameScene.getComponent("Game").updateLabels();        
