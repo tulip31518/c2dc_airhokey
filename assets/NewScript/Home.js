@@ -1,12 +1,3 @@
-// Learn cc.Class:
-//  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/class.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/class.html
-// Learn Attribute:
-//  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/reference/attributes.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/life-cycle-callbacks.html
 
 cc.Class({
     extends: cc.Component,
@@ -28,11 +19,6 @@ cc.Class({
 
         gameScene: cc.Node,
         finalNode: cc.Node,
-
-        // sndGameStart: {
-        //     default: null,
-        //     type: cc.AudioClip
-        // },
 
         sndGameStart:cc.AudioClip,
 
@@ -61,12 +47,7 @@ cc.Class({
         this.lobbyDisableAction = this.disable;
         this.readyAppearAction = cc.sequence(cc.scaleTo(.3, 1.3, 1.3).easing(cc.easeBackOut()), cc.scaleTo(.3, 1, 1), cc.delayTime(0.5), cc.scaleTo(0.1, 0, 0));
 
-        this.gameScene.getComponent("Game").homeNode = this;
-
-        //this.finalNode.cascadeOpacity = true;
-        //this.finalNode.opacity = 0;
-        //this.finalNode.active = true;
-        
+        this.gameScene.getComponent("Game").homeNode = this;        
         this.sprLogo.runAction(cc.sequence(cc.moveBy(0, cc.v2(0, 800)), this.lobbyAppearAction));
     },
 
@@ -87,18 +68,6 @@ cc.Class({
             text: text,
         });
     },
-
-    // _disableButtons () {
-    //     this.btnPlay.Enabled = false;
-    //     this.btnRank.Enabled = false;
-    //     this.btnInvite.Enabled = false;
-    // }
-
-    // _enableButtons () {
-    //     this.btnPlay.Enabled = true;
-    //     this.btnRank.Enabled = true;
-    //     this.btnInvite.Enabled = true;
-    // }
 
     onClickLobbyBack () {
         this._isShow = false;
@@ -135,24 +104,6 @@ cc.Class({
     },
 
     onClickInvite () {
-        // //wx.shareAppMessage({title: "", imageUrl: ""});
-        // //分享按钮
-        // cc.log("点击分享按钮");
-        // //this.playBtnSound();
-        
-        // // 主动拉起分享接口
-        // cc.loader.loadRes("texture/share",function(err,data){
-        //     wx.shareAppMessage({
-        //         title: "Enjoy AirHockey!",
-        //         imageUrl: data.url,
-        //         success(res){
-        //             console.log(res)
-        //         },
-        //         fail(res){
-        //             console.log(res)
-        //         }
-        //     })
-        // });    
         
         cc.loader.loadRes("textures/icon",function(err,data){
             wx.shareAppMessage({
@@ -183,7 +134,7 @@ cc.Class({
 
         this.humanScore = 0;
         this.botScore = 0;
-        this.currentLevel = 0;
+        // this.currentLevel = 0;
 
         this.finalNode.runAction(cc.sequence(this.finalDisappearAction, cc.callFunc(function () {
             this.btnFav.node.active = true;
@@ -193,8 +144,6 @@ cc.Class({
             
             this.sprLogo.position = cc.v2(0, 163);
             this.sprLogo.runAction(cc.sequence(cc.moveBy(0, cc.v2(0, 800)), this.lobbyAppearAction));
-             
-            // this.sprLogo.runAction(this.lobbyAppearAction);
         }, this)));
 
         this.gameScene.getComponent("Game").updateLabels();        
@@ -217,6 +166,7 @@ cc.Class({
         else{
             this.sprWin.active = false;
             this.sprLose.active = true;
+            this.currentLevel = 0;
         }
 
 
